@@ -1,0 +1,15 @@
+<%= layout('layouts/boilerplate') %>
+
+
+    <div style="background-color:rgb(90, 90, 90);margin:150px 50px 50px 50px;padding:20px;">
+        <h1>Hello cocksuckersss!!</h1>
+        <ul>
+            <% for (let product of products) { %>
+                <li>
+                    <h3>
+                        <%= product.name %> , <%= product.price %>
+                    </h3>
+                </li>
+                <% } %>
+        </ul>
+    </div>

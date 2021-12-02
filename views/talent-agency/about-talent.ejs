@@ -1,0 +1,40 @@
+<%= layout('layouts/boilerplate') %>
+
+        <head>
+                <link rel="stylesheet" href="/stylesheets/navbar.css">
+                <link rel="stylesheet" href="/stylesheets/footer.css">
+                <link rel="stylesheet" href="/stylesheets/nicepage.css">
+                <link rel="stylesheet" href="/stylesheets/about-talent.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                <script class="u-script" type="text/javascript" src="/scripts/nicepage.js" defer=""></script>
+                <script src="scripts/about-talent.js"></script>
+        </head>
+
+        <div class="wrapper">
+                <section class="u-align-center u-clearfix u-section-1" id="carousel_ae83">
+                        <div class="u-expanded-width u-shape u-shape-rectangle u-shape-1"></div>
+                        <div alt="" class="u-image u-image-circle u-image-1"></div>
+                        <h2 class="u-text u-text-1">
+                                <%= talent.name + " " + talent.surname %> <br>
+                        </h2>
+                        <h4 class="u-text u-text-3">
+                                <%= talent.profession %>
+                        </h4>
+                        <p class="u-text u-text-2">
+                                <%= talent.text %>
+                        </p>
+                        <!-- <a href="#"
+                class="u-active-none u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-hover-none u-none u-btn-1">My
+                work</a> -->
+                </section>
+
+
+
+                <div class="transition"></div>
+                <div class="container">
+                        <% for(let image of talent.work) {%>
+                                <img src="/assets/<%= image %> ">
+                                <% } %>
+                </div>
+
+        </div>

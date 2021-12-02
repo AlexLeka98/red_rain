@@ -1,0 +1,1015 @@
+
+
+*{
+  overflow:hidden;
+}
+
+body{
+  /* background-color:black; */
+}
+
+
+
+
+.section-1{
+  width:100%;
+  height:90vh;
+  margin-top:102px;
+  background-image: url("/assets/football-field-night.jpg");
+  background-attachment: fixed;
+  background-size:cover;
+  background-position:bottom center;
+}
+
+.section-1 .container-sec-1{
+  width:100%;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-1 .container-sec-1 .text-container{
+  height: 80%;
+  width:100%;
+  /* background-color:rgba(105, 105, 105, 0.701); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width:50%;
+  height:50%;
+  margin-left:10%;
+  margin-top:10%;
+  padding:15px 25px 15px 25px;
+  background-color:rgba(105, 105, 105, 0.701);
+  border-radius: 10px; */
+}
+
+
+.section-1 .container-sec-1 .text-container .text{
+  width:40%;
+  min-width:410px;
+  height: 60%;
+  background-color:rgba(0, 0, 0, 0.585);
+  color:white;
+  padding:30px;
+  padding-bottom:50px;
+  margin:50px 0px 0px 50px;
+  border-radius: 20px;
+}
+.section-1 .container-sec-1 .mybtn{
+  width:100%;
+  height:40%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.section-1 .container-sec-1 .mybtn button{
+  margin-right:100px;
+  margin-bottom:100px;
+  padding:10px 40px 10px 40px;
+  background-color:rgba(235, 255, 102, 0.884);
+  color:black;
+  font-weight: 500;
+  border-radius: 2px;
+  transition:all 0.2s;
+}
+
+.section-1 .container-sec-1 .mybtn button:hover{
+  cursor:pointer;
+  background-color:rgba(241, 255, 152, 0.884);
+  transform: scale(1.1);
+}
+
+.section-1 .container-sec-1 .mybtn button:active{
+  cursor:pointer;
+  background-color:rgba(241, 255, 152, 0.884);
+  border-color:none;
+  transform: scale(1.1);
+}
+
+@media (max-width: 575px) {
+  .section-1 .container-sec-1 .text-container{
+    align-items: center;
+  }
+
+  .section-1 .container-sec-1 .text-container .text{
+    margin:0;
+    height:60%;
+  }
+
+  .section-1 .container-sec-1 .mybtn{
+    justify-content: center;
+    align-items: center;
+    height:20%;
+  }
+
+  .section-1 .container-sec-1 .mybtn button{
+    margin:0;
+    margin-bottom:60px;
+    
+  }
+
+}
+
+
+
+
+
+
+/* .section-1 .container-sec-1 .text-container .text h1{
+  font-family: 'Font Awesome 5 Pro';
+  font-size:50px;
+  margin:0;
+  width:300px;
+  border-bottom: 1px solid black;
+}
+
+
+.section-1 .container-sec-1 .text p{
+  margin-bottom:0;
+  font-size:15px;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.u-section-1 {
+    background-image: url("/assets/football-field-night.jpg");
+    background-attachment: fixed;
+    background-position: bottom 150px right 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom:31px;
+    border-bottom: 100px solid rgba(0, 0, 0, 0.857);
+    margin-top:102px !important;
+    height:90vh;
+}
+
+.u-section-1 .text-container{
+    margin-top:200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:10px 20px 10px 20px;
+    width:650px;
+    height:300px;
+    background-color:rgba(164, 164, 164, 0.707);
+    border-radius: 20px;
+}
+
+/* .u-section-1 h2{
+    display: inline-block;
+    background-color:rgba(160, 160, 160, 0.578);
+    border-radius: 10px;
+    padding:10px 20px 10px 20px;
+    text-align: center;
+    width:auto;
+} */
+
+.u-section-1 .u-sheet-1 {
+min-height: 541px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+}
+
+.u-section-1 .u-text-1 {
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 39.6px;
+    font-size: 2.25rem;
+    font-weight: 700;
+    /* margin: 175px 570px 0 0; */
+}
+
+.u-section-1 .u-text-2 {
+    font-weight: 400;
+    font-style: normal;
+    margin: px 570px 0 0;
+    }
+
+.u-section-1 .u-btn-1 {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    background-image: none;
+    border-style: none;
+    margin: 26px 165px 10px auto;
+    padding: 8px 27px 8px 26px;
+}
+
+  @media (max-width: 1199px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 400px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      /* margin-top: -363px; */
+      margin-left:50px;
+    }
+  
+    .u-section-1 .u-text-2 {
+      margin-right: 370px;
+      margin-left:50px;
+    }
+  
+    .u-section-1 .u-btn-1 {
+      margin-right: 0;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 342px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      margin-right: 350px;
+    }
+  
+    .u-section-1 .u-text-2 {
+      margin-right: 165px;
+      font-size:16px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 257px;
+    }
+    .u-section-1 .u-sheet-1 h1, .u-section-1 .u-sheet-1 p{
+        font-size:10px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      /* margin-top: -349px; */
+      margin-right: 170px;
+    }
+  
+    .u-section-1 .u-text-2 {
+      margin-right: 0;
+    }
+
+    /* .u-section-1 .u-text-2 {
+        font-weight: 400;
+        font-style: normal;
+        margin: 10px 570px 0 0;
+        } */
+  }
+  
+  @media (max-width: 575px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 162px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      font-size: 1.5rem;
+      margin-top: -5px;
+      margin-right: 0;
+    }
+  }.u-section-2 {
+      height:100vh;
+    background-image: url("/assets/ball-in-ne.jpg");
+    /* background-attachment: fixed;
+    background-position: bottom 150px right 0px;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    display: flex;
+    align-items: center;
+    padding-bottom:30px;
+    border-bottom: 150px solid rgba(0, 0, 0, 0.857);
+  }
+  
+  .u-section-2 .u-sheet-1 {
+    min-height: 489px;
+  }
+  
+  .u-section-2 .u-video-1 {
+    height: 401px;
+    width: 948px;
+    animation-duration: 1000ms;
+    margin: 44px auto;
+  }
+  
+  .u-section-2 .embed-responsive-1 {
+    position: absolute;
+    width: 178%;
+    height: 178%;
+    left: -39%;
+    top: -39%;
+  }
+  
+  @media (max-width: 1199px) {
+    .u-section-2 {
+      background-position: 50% 50%;
+    }
+  
+    /* .u-section-2 .u-video-1 {
+      width: 940px;
+    } */
+  }
+  
+  @media (max-width: 991px) {
+    .u-section-2 .u-sheet-1 {
+      min-height: 411px;
+    }
+  
+    /* .u-section-2 .u-video-1 {
+      height: 323px;
+      width: 720px;
+    } */
+  
+    .u-section-2 .embed-responsive-1 {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .u-section-2 .u-sheet-1 {
+      min-height: 549px;
+    }
+  
+    .u-section-2 .u-video-1 {
+      height: 300px;
+      margin-right: initial;
+      margin-left: initial;
+      width: auto;
+    }
+  
+    .u-section-2 .embed-responsive-1 {
+      width: 178%;
+      height: 178%;
+      left: -39%;
+      top: -39%;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .u-section-2 .u-sheet-1 {
+      min-height: 473px;
+    }
+  
+    /* .u-section-2 .u-video-1 {
+      height: 190px;
+      width: auto;
+      margin-right: initial;
+      margin-left: initial;
+    } */
+  
+    .u-section-2 .embed-responsive-1 {
+      width: 210%;
+      height: 100%;
+      left: -55%;
+      top: 0%;
+    }
+  }.u-section-3 {
+    background-image: none;
+  }
+  
+  .u-section-3 .u-sheet-1 {
+    min-height: 458px;
+  }
+  
+  .u-section-3 .u-text-1 {
+    margin: 60px 0 0;
+  }
+  
+  .u-section-3 .u-btn-1 {
+    border-style: none;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    background-image: none;
+    margin: 30px auto 60px;
+    padding: 8px 27px 8px 26px;
+  }.u-section-4 {
+    background-image: none;
+    padding-bottom: 55px;
+  }
+  
+  .u-section-4 .u-sheet-1 {
+    min-height: 416px;
+  }
+  
+  .u-section-4 .u-text-1 {
+    width: 780px;
+    font-weight: 700;
+    margin: 60px auto 0;
+  }
+  
+  .u-section-4 .u-text-2 {
+    font-size: 1.25rem;
+    font-weight: 300;
+    width: 780px;
+    margin: 20px auto 0;
+  }
+  
+  .u-section-4 .u-btn-1 {
+    background-image: none;
+    text-transform: uppercase;
+    font-size: 1.125rem;
+    letter-spacing: 2px;
+    margin: 30px auto 60px;
+    padding: 6px 24px 7px 23px;
+  }
+  
+  @media (max-width: 991px) {
+    .u-section-4 .u-text-1 {
+      width: 720px;
+    }
+  
+    .u-section-4 .u-text-2 {
+      width: 720px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .u-section-4 .u-text-1 {
+      width: 540px;
+    }
+  
+    .u-section-4 .u-text-2 {
+      width: 540px;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .u-section-4 .u-text-1 {
+      width: 340px;
+    }
+  
+    .u-section-4 .u-text-2 {
+      width: 340px;
+    }
+  }
+
+
+
+
+
+
+  .u-section-5 {
+    padding-bottom: 50px;
+    background-position: 50% 50%;
+    background-image:url("/assets/pricing-table-football.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: bottom bottom;
+  }
+  
+  .u-section-5 .u-sheet-1 {
+    min-height: 437px;
+  }
+  
+  .u-section-5 .u-layout-wrap-1 {
+    width: 790px;
+    margin: 54px auto 30px;
+  }
+  
+  .u-section-5 .u-layout-cell-1 {
+    min-height: 422px;
+    background-image: linear-gradient(rgba(254,249,230,0.88), rgba(254,249,230,0.88));
+  }
+  
+  .u-section-5 .u-container-layout-1 {
+    padding: 30px;
+  }
+  
+  .u-section-5 .u-text-1 {
+    margin: 38px 0 0;
+  }
+  
+  .u-section-5 .u-text-2 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 3.75rem;
+    margin: 13px 0 0;
+  }
+  
+  .u-section-5 .u-text-3 {
+    margin: 13px 0 0;
+  }
+  
+  .u-section-5 .u-btn-1 {
+    background-image: none;
+    border-style: none;
+    font-weight: 700;
+    margin: 45px auto 0;
+    padding: 9px 50px 10px;
+  }
+  
+  .u-section-5 .u-layout-cell-2 {
+    min-height: 422px;
+    background-image: linear-gradient(rgba(254,249,230,0.88), rgba(254,249,230,0.88));
+  }
+  
+  .u-section-5 .u-container-layout-2 {
+    padding: 30px;
+  }
+  
+  .u-section-5 .u-text-4 {
+    margin: 38px 0 0;
+  }
+  
+  .u-section-5 .u-text-5 {
+    font-weight: 700;
+    font-size: 3.75rem;
+    margin: 13px 0 0;
+  }
+  
+  .u-section-5 .u-text-6 {
+    margin: 13px 0 0;
+  }
+  
+  .u-section-5 .u-btn-2 {
+    background-image: none;
+    border-style: none;
+    animation-duration: 1000ms;
+    font-weight: 700;
+    margin: 45px auto 0;
+    padding: 9px 51px 10px 50px;
+  }
+  
+  @media (max-width: 1199px) {
+    .u-section-5 .u-sheet-1 {
+      min-height: 360px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .u-section-5 .u-sheet-1 {
+      min-height: 276px;
+    }
+  
+    .u-section-5 .u-layout-wrap-1 {
+      width: 720px;
+    }
+  
+    .u-section-5 .u-layout-cell-1 {
+      min-height: 100px;
+    }
+  
+    .u-section-5 .u-layout-cell-2 {
+      min-height: 100px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .u-section-5 .u-sheet-1 {
+      min-height: 207px;
+    }
+  
+    .u-section-5 .u-layout-wrap-1 {
+      width: 540px;
+    }
+  
+    .u-section-5 .u-container-layout-1 {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    .u-section-5 .u-container-layout-2 {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .u-section-5 .u-sheet-1 {
+      min-height: 130px;
+    }
+  
+    .u-section-5 .u-layout-wrap-1 {
+      width: 340px;
+    }
+  
+    .u-section-5 .u-text-2 {
+      font-size: 1.5rem;
+    }
+  
+    .u-section-5 .u-text-5 {
+      font-size: 1.5rem;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .u-section-1 {
+    background-image: url("/football-field-night.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+        padding-bottom:130px;
+    border-bottom:130px solid rgb(95, 95, 95);
+  }
+
+.backImage{
+    width:100%;
+    height:400px;
+    background-image: url("/football-field-night.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
+  .u-section-1 .u-sheet-1 {
+    min-height: 596px;
+  }
+  
+  .u-section-1 .u-text-1 {
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 39.6px;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 175px 570px 0 0;
+  }
+  
+  .u-section-1 .u-text-2 {
+    font-weight: 400;
+    font-style: normal;
+    margin: 52px 570px 0 0;
+  }
+  
+  .u-section-1 .u-btn-1 {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    background-image: none;
+    border-style: none;
+    margin: 26px 165px 60px auto;
+    padding: 8px 27px 8px 26px;
+  }
+  
+  @media (max-width: 1199px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 491px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      margin-top: -363px;
+    }
+  
+    .u-section-1 .u-text-2 {
+      margin-right: 370px;
+    }
+  
+    .u-section-1 .u-btn-1 {
+      margin-right: 0;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 376px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      margin-right: 350px;
+    }
+  
+    .u-section-1 .u-text-2 {
+      margin-right: 150px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 282px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      margin-top: -349px;
+      margin-right: 170px;
+    }
+  
+    .u-section-1 .u-text-2 {
+      margin-right: 0;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .u-section-1 .u-sheet-1 {
+      min-height: 178px;
+    }
+  
+    .u-section-1 .u-text-1 {
+      font-size: 1.5rem;
+      margin-top: -345px;
+      margin-right: 0;
+    }
+  }.u-section-2 {
+
+  background: rgb(255,248,100);
+background: linear-gradient(327deg, rgba(255,248,100,1) 17%, rgba(82,82,82,1) 85%);
+  padding-bottom:70px;
+  }
+  
+  .u-section-2 .u-sheet-1 {
+    min-height: 489px;
+  }
+  
+  .u-section-2 .u-video-1 {
+    height: 401px;
+    width: 948px;
+    animation-duration: 1000ms;
+    margin: 44px auto;
+  }
+  
+  .u-section-2 .embed-responsive-1 {
+    position: absolute;
+    width: 178%;
+    height: 178%;
+    left: -39%;
+    top: -39%;
+  }
+  
+  @media (max-width: 1199px) {
+    .u-section-2 {
+      background-position: 50% 50%;
+    }
+  
+    .u-section-2 .u-video-1 {
+      width: 940px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .u-section-2 .u-sheet-1 {
+      min-height: 411px;
+    }
+  
+    .u-section-2 .u-video-1 {
+      height: 323px;
+      width: 720px;
+    }
+  
+    .u-section-2 .embed-responsive-1 {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .u-section-2 .u-sheet-1 {
+      min-height: 549px;
+    }
+  
+    .u-section-2 .u-video-1 {
+      height: 300px;
+      margin-right: initial;
+      margin-left: initial;
+      width: auto;
+    }
+  
+    .u-section-2 .embed-responsive-1 {
+      width: 178%;
+      height: 178%;
+      left: -39%;
+      top: -39%;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .u-section-2 .u-sheet-1 {
+      min-height: 473px;
+    }
+  
+    .u-section-2 .u-video-1 {
+      height: 190px;
+      width: auto;
+      margin-right: initial;
+      margin-left: initial;
+    }
+  
+    .u-section-2 .embed-responsive-1 {
+      width: 210%;
+      height: 100%;
+      left: -55%;
+      top: 0%;
+    }
+
+  
+  .u-section-3 .u-sheet-1 {
+    min-height: 558px;
+  }
+  
+  .u-section-3 .u-text-1 {
+    margin: 60px 0 0;
+  }
+  
+  .u-section-3 .u-btn-1 {
+    border-style: none;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    background-image: none;
+    margin: 30px auto 60px;
+    padding: 8px 27px 8px 26px;
+  }
+
+
+
+  .u-section-4 {
+    background-image: none;
+  }
+  
+  .u-section-4 .u-sheet-1 {
+    min-height: 416px;
+  }
+  
+  .u-section-4 .u-text-1 {
+    width: 780px;
+    font-weight: 700;
+    margin: 60px auto 0;
+  }
+  
+  .u-section-4 .u-text-2 {
+    font-size: 1.25rem;
+    font-weight: 300;
+    width: 780px;
+    margin: 20px auto 0;
+  }
+  
+  .u-section-4 .u-btn-1 {
+    background-image: none;
+    text-transform: uppercase;
+    font-size: 1.125rem;
+    letter-spacing: 2px;
+    margin: 30px auto 60px;
+    padding: 6px 24px 7px 23px;
+  }
+  
+  @media (max-width: 991px) {
+    .u-section-4 .u-text-1 {
+      width: 720px;
+    }
+  
+    .u-section-4 .u-text-2 {
+      width: 720px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .u-section-4 .u-text-1 {
+      width: 540px;
+    }
+  
+    .u-section-4 .u-text-2 {
+      width: 540px;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .u-section-4 .u-text-1 {
+      width: 340px;
+    }
+  
+    .u-section-4 .u-text-2 {
+      width: 340px;
+    }
+  } */

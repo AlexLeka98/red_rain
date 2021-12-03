@@ -175,7 +175,7 @@ app.get('/entertainment', (req, res) => {
 
 
 
-
+console.log("shut up");
 
 
 

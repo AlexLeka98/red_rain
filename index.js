@@ -154,8 +154,6 @@ app.get("/about-talent/:id", async (req, res) => {
 
 
 
-
-
 // Education
 app.get("/education", (req, res) => {
     res.render("./education/education");
@@ -165,24 +163,6 @@ app.get("/education", (req, res) => {
 app.get('/entertainment', (req, res) => {
     res.render('./entertainment/entertainment');
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

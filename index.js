@@ -133,7 +133,6 @@ app.get('/about', (req, res) => {
 // Talent Agency
 app.get('/talent-agency', (req, res) => {
     res.render('./talent-agency/talent-agency');
-
 })
 
 app.get('/talent-agency/:profession', async (req, res) => {

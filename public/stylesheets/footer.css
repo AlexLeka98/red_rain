@@ -52,19 +52,20 @@ footer{
 }
 .socials li{
   margin: 0 5px;
-  padding:8px;
+  padding:14px 5px 14px 5px;
 }
 .socials a{
   text-decoration: none;
   color: #f5d000;
 }
 .socials a i{
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   transition: color .4s ease;
   transition: transform .1s;
 }
 .socials a:hover i{
   transform: scale(1.7);
+  margin: 0px 4px;
   color: #fff9d4;
 }
 

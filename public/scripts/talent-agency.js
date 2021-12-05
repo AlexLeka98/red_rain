@@ -18,8 +18,9 @@ images.forEach((image) => {
 
 
 const items = document.querySelectorAll(".u-repeater-item");
-console.log(items);
 items.forEach((item) => {
+    item.style.backgroundImage = `url(${item.dataset.image})`
+    item.style.backgroundPosition = "50% 32.28%";
     item.addEventListener('mouseenter', function () {
         a = item.querySelectorAll('.profession');
         a[0].classList.add('blacroundfull');
@@ -29,3 +30,4 @@ items.forEach((item) => {
         a[0].classList.remove('blacroundfull');
     })
 })
+

@@ -21,7 +21,14 @@
                 Talent Agency<br>
             </h1>
             <div class="u-list u-repeater u-list-1">
-                <div class="u-align-right u-container-style u-image u-list-item u-repeater-item u-image-2">
+                <% for (let i = 0; i<talents.length; i++) { %> 
+                    <div class="u-align-right u-container-style u-image u-list-item u-repeater-item u-image-<%=i+2%>" data-image="<%= talents[i].photo %> ">
+                        <a class="profession" href="<%= talents[i].route %> ">
+                            <%= talents[i].profession %> 
+                        </a>
+                    </div>
+                <% } %> 
+                <!-- <div class="u-align-right u-container-style u-image u-list-item u-repeater-item u-image-2">
                     <a class="profession" href="/talent-agency/photographer">
                         Photographers
                     </a>
@@ -80,9 +87,8 @@
                     <a class="profession" href="/talent-agency/contentcreator">
                         Content Creators
                     </a>
-                </div>
+                </div> -->
             </div>
         </section>
     </div>
-    w
     <script src="/scripts/talent-agency.js"></script>

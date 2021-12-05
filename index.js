@@ -12,6 +12,7 @@ const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const mongoose = require('mongoose');
 
 const multer = require('multer');
 const {storage} = require('./cloudinary');
@@ -20,33 +21,6 @@ const upload = multer(storage);
 
 const Events = require('./models/event');
 const Talents = require('./models/talent');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const mongoose = require('mongoose');
 const Product = require('./models/product');
 
 mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -57,129 +31,6 @@ mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true,
         console.log("ERROR");
         console.log(err);
     })
-
-// Mapping of different collection keys to different types in javascript. 
-// (e.x title: String)
-// So title should be a String once it makes it back to me in javascript.
-// const movieSchema = new mongoose.Schema({
-//     title: {
-//         type:String,
-//         default:"No-name",
-//         maxlength:20
-//     },
-//     year:{
-//         type:Number,
-//         maxlength:4
-//     },
-//     score: {
-//         type:Number,
-//         minlength:0
-//     },
-//     rating: String,
-//     categories:{
-//         type:[String]
-//     },
-//     subtitles: {
-//         english: {
-//             type: Boolean,
-//             default:false
-//         },
-//         greek: {
-//             type:Boolean,
-//             default:false
-//         }
-//     }
-// })
-
-// // Methods added to all different movies that are going to be in turn added to the Movie model.
-// // This method will be accessible by all movies in the database.
-// movieSchema.methods.greet = function() {
-//     console.log(`Hello from ${this.title}`);
-// }
-
-// // I want to make a model
-// const Movie = mongoose.model('Movie', movieSchema);
-// // find something
-// Movie.find({rating:'R'}).then(data => {
-//     console.log(data);
-//     return data;
-// })
-
-// async function createNewMovie(movie){
-//     console.log("Here");
-//     await new Movie(movie).save();
-// }
-
-// async function showAllMovies(){
-//     await Movie.find().then(movies => {
-//         console.log("All movies:");
-//         movies.forEach(movie => {
-//             console.log(movie.title);
-//         })
-//     })
-// }
-
-// async function findByName(name){
-//     await Movie.find({name:`${name}`}).then(foundItems => {
-//         console.log("Found items:");
-//         console.log(foundItems);
-//     }).catch(err => {
-//         console.log(err);
-//     })
-// }
-
-// async function deleteByName(name){
-//     await Movie.deleteMany({ name: `${name}` }).then(deletedItems => {
-//         console.log("Deleted everything: ");
-//         console.log(deletedItems);
-//     });
-// }
-
-// async function deleteAllMovies(){
-//     await Movie.deleteMany({}).then(deletedItems => {
-//         console.log("Deleted everything: ");
-//         showAllMovies();
-//     });
-// }
-
-// deleteAllMovies();
-// createNewMovie({title:"Price of Persia", year:2014,subtitles:{english:true}});
-// showAllMovies();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 app.engine('ejs', ejsMate);
@@ -197,7 +48,6 @@ app.use(helmet());
 
 const sessionOptions = { secret: 'thisisthesecret', resave: false, saveUninitialized: false };
 app.use(session(sessionOptions));
-
 
 
 app.post('/create-checkout-session', async (req, res) => {
@@ -238,7 +88,6 @@ app.get('/failure', (req, res) => {
     res.render('failure');
 })
 
-
 app.get('/home', (req, res) => {
     res.render('home');
 })
@@ -277,12 +126,6 @@ app.get('/about', (req, res) => {
 
 
 
-
-
-
-
-
-
 app.get('/products',async (req,res) => {
     const products = await Product.find({});
     res.send(`ALL PRODUCTS ARE HERE
@@ -291,20 +134,22 @@ app.get('/products',async (req,res) => {
 // Talent Agency
 app.get('/talent-agency',async (req, res) => {
     const talents = await Talents.find({});
+    console.log(talents)
     res.render('./talent-agency/talent-agency',{talents});
 })
 
 app.get('/talent-agency/:profession', async (req, res) => {
     const { profession } = req.params;
-    const professions = await Talents.find({ profession: profession });
-    console.log(profession);
-    res.render('./talent-agency/talents', { professions });
+    const professions = await Talents.find({profession_rec:profession});
+    res.render('./talent-agency/talents',{professions});
 })
+
+
+
 
 app.get("/about-talent/:id", async (req, res) => {
     const { id } = req.params;
     const talent = await Talents.findById(id);
-    console.log(talent);
     res.render("./talent-agency/about-talent", { talent });
 })
 

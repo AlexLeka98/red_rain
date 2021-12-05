@@ -509,8 +509,6 @@
     left: 0;
   }
   
-
-  
   .u-section-1 .u-container-layout-9 {
     padding: 55px 30px 30px;
   }
@@ -523,8 +521,6 @@
     left: 0;
   }
   
-
-  
   .u-section-1 .u-container-layout-10 {
     padding: 55px 30px 30px;
   }
@@ -536,7 +532,6 @@
     top: 0;
     left: 0;
   }
-  
 
   
   .u-section-1 .u-container-layout-11 {
@@ -913,6 +908,7 @@
     align-items: center;
     background-color:rgba(0, 0, 0, 0.817);
     transition:all 0.2s;
+    text-transform: capitalize;
   }
 
   .blacroundfull{

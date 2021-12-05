@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
+const freelancerSchema = new mongoose.Schema({
     name: {
         type:String,
         required:true
@@ -14,9 +14,13 @@ const productSchema = new mongoose.Schema({
         type:String,
         lowercase:true,
         enum: ['fruit', 'vegetable', 'diary']
+    },
+    job: {
+        type:String,
+        required:true
     }
 });
 
-const Products = mongoose.model('Products', productSchema);
+const Freelancers = mongoose.model('Freelancers', freelancerSchema);
 
-module.exports = Products;
+module.exports = Freelancers;

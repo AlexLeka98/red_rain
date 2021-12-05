@@ -54,85 +54,85 @@ const seedTalents = [
     {
         profession: "Photographers",
         photo: "/assets/photoshoot-talent-agency.jpg",
-        // surname: "",
-        route: "/talent-agency/photographer",
+        profession_rec: "photographers",
+        route: "/talent-agency/photographers",
         // text: "",
     },
     {
         profession: "Videographers",
         photo: "/assets/videographer.jpg",
-        // surname: "",
-        route: "/talent-agency/videographer",
+        profession_rec: "videographers",
+        route: "/talent-agency/videographers",
         // text: "",
     },
     {
         profession: "Graphic Designers",
         photo: "/assets/graphicdesign.jpg",
-        // surname: "",
-        route: "/talent-agency/graphicdesigner",
+        profession_rec: "graphicdesigners",
+        route: "/talent-agency/graphicdesigners",
         // text: "",
     },
     {
         profession: "Make Up Artists",
         photo: "/assets/makeupartist.jpg",
-        // surname: "",
-        route: "/talent-agency/makeup",
+        profession_rec: "makeupartists",
+        route: "/talent-agency/makeupartists",
         // text: "",
     },
     {
         profession: "Nail Technicians",
         photo: "/assets/nailtechnician.jpg",
-        // surname: "",
-        route: "/talent-agency/nail",
+        profession_rec: "nailtechnicians",
+        route: "/talent-agency/nailtechnicians",
         // text: "",
     },
     {
         profession: "Hair Technicians",
         photo: "/assets/hairtechnician.jpg",
-        // surname: "",
-        route: "/talent-agency/hair",
+        profession_rec: "hairtechnicians",
+        route: "/talent-agency/hairtechnicians",
         // text: "",
     },
     {
         profession: "Event Decor",
         photo: "/assets/eventdecor.jpg",
-        // surname: "",
+        profession_rec: "eventdecor",
         route: "/talent-agency/eventdecor",
         // text: "",
     },
     {
         profession: "Event Planners",
         photo: "/assets/eventplanner.jpg",
-        // surname: "",
-        route: "/talent-agency/eventplanner",
+        profession_rec: "eventplanners",
+        route: "/talent-agency/eventplanners",
         // text: "",
     },
     {
         profession: "Event Presenters",
         photo: "/assets/eventpresentor.jpg",
-        // surname: "",
-        route: "/talent-agency/eventhost",
+        profession_rec: "eventpresenters",
+        route: "/talent-agency/eventpresenters",
         // text: "",
     },
     {
         profession: "Models",
         photo: "/assets/model.jpg",
-        // surname: "",
-        route: "/talent-agency/model",
+        profession_rec: "models",
+        route: "/talent-agency/models",
         // text: "",
     },
     {
         profession: "Social Media Influencers",
         photo: "/assets/influencer.jpg",
-        // surname: "",
-        route: "/talent-agency/socialmediainfluencer",
+        profession_rec: "socialmediainfluencers",
+        route: "/talent-agency/socialmediainfluencers",
         // text: "",
     },
     {
         profession: "Content Creators",
         photo: "/assets/contentcreator.jpg",
-        // surname: "",
-        route: "/talent-agency/contentcreator",
+        profession_rec: "contentcreators",
+        route: "/talent-agency/contentcreators",
         // text: "",
     },
 ]
@@ -146,10 +146,10 @@ Talent.insertMany(seedTalents)
     console.log(err)
 })
 
-Product.insertMany(seedProducts)
-.then(res => {
-    console.log(res);
-})
-.catch(err => {
-    console.log(err)
-})
+// Product.insertMany(seedProducts)
+// .then(res => {
+//     console.log(res);
+// })
+// .catch(err => {
+//     console.log(err)
+// })

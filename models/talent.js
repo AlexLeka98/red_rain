@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const Freelancers = require('./freelancer');
 
 const talentSchema = new mongoose.Schema({
     profession: {
         type: String,
+        lowercase: true,
         required: true
     },
     photo: {
@@ -12,16 +14,15 @@ const talentSchema = new mongoose.Schema({
     route: {
         type: String,
         required: true
+    }, 
+    profession_rec: {
+        type: String,
+        required: true
     },
-    // email: {
-    //     type: String
-    // },
-    // text: {
-    //     type: String,
-    //     min: 0
-    // },
-    // work: [String]
-})
+    freelancers:{
+        type: [String]
+    }
+});
 
 const Talent = mongoose.model('Talent', talentSchema);
 

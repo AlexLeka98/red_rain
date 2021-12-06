@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const Freelancers = require('./freelancer');
+const {Schema} = mongoose;
+const {freelancerSchema,Freelancers} = require('./freelancer');
+
 
 const talentSchema = new mongoose.Schema({
     profession: {
@@ -20,7 +22,7 @@ const talentSchema = new mongoose.Schema({
         required: true
     },
     freelancers:{
-        type: [String]
+        type: [{type: Schema.Types.ObjectId,ref: 'Freelancers'}]
     }
 });
 

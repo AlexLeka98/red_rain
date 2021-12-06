@@ -138,10 +138,12 @@ app.get('/talent-agency',async (req, res) => {
     res.render('./talent-agency/talent-agency',{talents});
 })
 
-app.get('/talent-agency/:profession', async (req, res) => {
-    const { profession } = req.params;
-    const professions = await Talents.find({profession_rec:profession});
-    res.render('./talent-agency/talents',{professions});
+// This is where I left off
+app.get('/talent-agency/:id', async (req, res) => {
+    const { id } = req.params;
+    const freelancers = await Talents.findById(id);
+    console.log(freelancers);
+    res.render('./talent-agency/talents',{freelancers});
 })
 
 

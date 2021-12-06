@@ -13,7 +13,7 @@ const freelancerSchema = new mongoose.Schema({
     category: {
         type:String,
         lowercase:true,
-        enum: ['fruit', 'vegetable', 'diary']
+        enum: ['hour', 'session', 'week', 'month']
     },
     job: {
         type:String,
@@ -23,4 +23,22 @@ const freelancerSchema = new mongoose.Schema({
 
 const Freelancers = mongoose.model('Freelancers', freelancerSchema);
 
-module.exports = Freelancers;
+module.exports = {
+    freelancerSchema: freelancerSchema,
+    Freelancers: Freelancers
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Product = require('./models/product');
 const Talent = require('./models/talent');
+const {Freelancers} = require('./models/freelancer');
+const { sanitize } = require('express-mongo-sanitize');
 
 mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -11,6 +13,74 @@ mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true,
         console.log(err);
     })
 
+const seedFreelancers = [
+    {
+        name:'Alex',
+        price:'20',
+        category: 'hour',
+        job: 'photographers'
+    },
+    {
+        name:'Liam',
+        price:'23',
+        category: 'hour',
+        job: 'videographers'
+    },
+    {
+        name:'Noah',
+        price:'28',
+        category: 'hour',
+        job: 'photographers'
+    },
+    {
+        name:'Oliver',
+        price:'30',
+        category: 'hour',
+        job: 'videographers'
+    },
+    {
+        name:'Elijah',
+        price:'50',
+        category: 'hour',
+        job: 'photographers'
+    },
+    {
+        name:'William',
+        price:'20',
+        category: 'hour',
+        job: 'videographers'
+    },
+    {
+        name:'James',
+        price:'20',
+        category: 'hour',
+        job: 'photographers'
+    },
+    {
+        name:'Benjamin',
+        price:'20',
+        category: 'hour',
+        job: 'videographers'
+    },
+    {
+        name:'Lucas',
+        price:'20',
+        category: 'hour',
+        job: 'photographers'
+    },
+    {
+        name:'Cole',
+        price:'20',
+        category: 'hour',
+        job: 'videographers'
+    },
+    {
+        name:'Conor',
+        price:'20',
+        category: 'hour',
+        job: 'photographers'
+    },
+]
 
 const seedProducts = [
     {
@@ -63,7 +133,6 @@ const seedTalents = [
         photo: "/assets/videographer.jpg",
         profession_rec: "videographers",
         route: "/talent-agency/videographers",
-        // text: "",
     },
     {
         profession: "Graphic Designers",
@@ -138,10 +207,36 @@ const seedTalents = [
 ]
 
 
+// Freelancers.insertMany(seedFreelancers)
+// .then(res => {
+//     console.log("Added all freelancers",res.length);
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+async function getAllFreelancers(){
+    let allFreelancers = await Freelancers.find({});
+    return allFreelancers
+}
+
 Talent.insertMany(seedTalents)
-.then(res => {
-    console.log(res);
-})
+    .then(res => {
+        getAllFreelancers().then((freelancers)=>{
+            for (let i = 0; i < freelancers.length; i++) {
+                console.log(freelancers[i].job);
+                res.forEach(talent => {
+                    if (freelancers[i].job === talent.profession_rec) {
+                        // console.log(`freelancers[i].job: ${freelancers[i].job}     talent.profession_rec  : ${talent.profession_rec}`)                   
+                        talent.freelancers.push(freelancers[i])
+                        // talent.save();
+                        // console.log(talent.freelancers);
+                        // talent.freelancers.push(freelancers[i]);
+                    }
+                })
+            }
+        });
+    })
 .catch(err => {
     console.log(err)
 })

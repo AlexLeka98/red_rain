@@ -5,6 +5,10 @@ const freelancerSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    surname: {
+        type:String,
+        required:true
+    },
     price: {
         type:Number,
         required:true,
@@ -18,6 +22,13 @@ const freelancerSchema = new mongoose.Schema({
     job: {
         type:String,
         required:true
+    },
+    profileImage: {
+        type: String,
+        default:"/assets/profile1.jpg"
+    },
+    work: {
+        type:String
     }
 });
 

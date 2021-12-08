@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema({
     },
     farm: {
         type: Schema.Types.ObjectId,
-        red: 'Farm'
+        ref: 'Farm'
     }
 });
 

@@ -16,12 +16,14 @@
             <img class="u-expanded-width u-image u-image-1" src="/assets/photoshoot-talent-agency.jpg">
             <h5 class="u-custom-font u-font-open-sans u-text u-text-body-alt-color u-text-1">find what you need</h5>
             <h1
-                class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-font-oswald u-text u-text-body-alt-color u-text-2">
+                class="u-align-center-md u-align-center-sm u-align-center-xs 
+                u-custom-font u-font-oswald u-text u-text-body-alt-color u-text-2">
                 Talent Agency<br>
             </h1>
             <div class="u-list u-repeater u-list-1">
                 <% for (let i = 0; i<talents.length; i++) { %> 
-                    <div class="u-align-right u-container-style u-image u-list-item u-repeater-item u-image-<%=i+2%>" data-image="<%= talents[i].photo %> ">
+                    <div class="u-align-right u-container-style u-image u-list-item u-repeater-item u-image-<%=i+2%>" 
+                        data-image="<%= talents[i].photo %> ">
                         <a class="profession" href="talent-agency/<%=talents[i]._id%>">
                             <%= talents[i].profession %>
                         </a>

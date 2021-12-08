@@ -11,20 +11,19 @@
 
 
     <section class="u-clearfix u-image u-section-1 margin-top" id="sec-746c" data-image-width="150"
-        data-image-height="99">
-
-        <!-- <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        data-image-height="99" data-image='<%= talents.photo %>'>
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
             <div class="u-list u-repeater u-list-1">
-                <% //for (let profession of professions){ %>
+                <% for (let freelancer of talents.freelancers){ %>
                     <div
                         class="u-container-style u-gradient u-list-item u-repeater-item u-shape-rectangle u-list-item-1">
                         <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
                             <img alt="" class="u-expanded-width u-image u-image-default u-image-1"
                                 data-image-width="2000" data-image-height="1333"
-                                src="/assets/<%= //profession.work[0] %> ">
+                                src="<%= freelancer.profileImage %> ">
                             <h3 class="u-text u-text-1">
-                                <%= //profession.name %>
-                                    <%= //profession.surname %>
+                                <%= freelancer.name %>
+                                <%= freelancer.surname %>
                             </h3>
                             <div
                                 class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1">
@@ -33,11 +32,17 @@
                                 double
                                 click to start
                                 editing the text.</p>
-                            <a href="/about-talent/<%= //profession._id%> " class="btn u-button-style u-btn-1 clr">learn
+                            <a href="/about-talent/<%= freelancer._id%> " class="btn u-button-style u-btn-1 clr">learn
                                 more</a>
                         </div>
                     </div>
-                    <% //} %>
+                <% } %>
             </div>
-        </div> -->
+        </div>
     </section>
+
+    <script src="/scripts/talents.js">
+        // const image = document.getElementById("sec-746c");
+        // image.style.backgroundImage = `url(${image.dataset.image})`
+
+    </script>

@@ -22,6 +22,7 @@ const upload = multer(storage);
 const Events = require('./models/event');
 const Talents = require('./models/talent');
 const Product = require('./models/product');
+const {Freelancers} = require('./models/freelancer');
 
 mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -138,21 +139,22 @@ app.get('/talent-agency',async (req, res) => {
     res.render('./talent-agency/talent-agency',{talents});
 })
 
-// This is where I left off
+
 app.get('/talent-agency/:id', async (req, res) => {
     const { id } = req.params;
-    const freelancers = await Talents.findById(id);
-    console.log(freelancers);
-    res.render('./talent-agency/talents',{freelancers});
+    const talents_populate = await Talents.findById(id).populate('freelancers');
+    console.log(talents_populate);
+    res.render('./talent-agency/talents',{talents: talents_populate});
 })
 
 
 
-
+// Here is the persons profile. His work and everything. about-talent is a bad name
 app.get("/about-talent/:id", async (req, res) => {
     const { id } = req.params;
-    const talent = await Talents.findById(id);
-    res.render("./talent-agency/about-talent", { talent });
+    const person = await Freelancers.findById(id);
+    // console.log(person);
+    res.render("./talent-agency/about-talent", { person });
 })
 
 

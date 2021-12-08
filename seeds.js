@@ -16,162 +16,189 @@ mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true,
 const seedFreelancers = [
     {
         name:'Alex',
+        surname:"Smith",
         price:'20',
         category: 'hour',
         job: 'graphicdesigners'
     },
     {
         name:'Liam',
+        surname:"Jones",
         price:'23',
         category: 'hour',
         job: 'videographers'
     },
     {
         name:'Noah',
+        surname:"Brown",
         price:'28',
         category: 'hour',
         job: 'nailtechnicians'
     },
     {
         name:'Oliver',
+        surname:"Taylor",
         price:'30',
         category: 'hour',
         job: 'videographers'
     },
     {
         name:'Elijah',
+        surname:"Williams",
         price:'50',
         category: 'hour',
         job: 'photographers'
     },
     {
         name:'William',
+        surname:"Wilson",
         price:'20',
         category: 'hour',
         job: 'makeupartists'
     },
     {
         name:'James',
+        surname:"Johnson",
         price:'20',
         category: 'hour',
         job: 'eventplanners'
     },
     {
         name:'Benjamin',
+        surname:"Franklin",
         price:'20',
         category: 'hour',
         job: 'photographers'
     },
     {
         name:'Lucas',
+        surname:"Davies",
         price:'20',
         category: 'hour',
         job: 'graphicdesigners'
     },
     {
         name:'Cole',
+        surname:"Green",
         price:'20',
         category: 'hour',
         job: 'videographers'
     },
     {
         name:'Conor',
+        surname:"Clark",
         price:'20',
         category: 'hour',
         job: 'hairtechnicians'
     },
     {
         name:'Isaac',
+        surname:"Roberts",
         price:'20',
         category: 'hour',
         job: 'hairtechnicians'
     },
     {
         name:'Lincoln',
+        surname:"Lewis",
         price:'20',
         category: 'hour',
         job: 'makeupartists'
     },
     {
         name:'Anthony',
+        surname:"Petrov",
         price:'20',
         category: 'hour',
         job: 'eventplanners'
     },
     {
         name:'Dylan',
+        surname:"Moore",
         price:'20',
         category: 'hour',
         job: 'eventdecor'
     },
     {
         name:'Thomas',
+        surname:"Allen",
         price:'20',
         category: 'hour',
         job: 'eventpresenters'
     },
     {
         name:'Charles',
+        surname:"James",
         price:'20',
         category: 'hour',
         job: 'eventpresenters'
     },
     {
         name:'Christopher',
+        surname:"Knight",
         price:'20',
         category: 'hour',
         job: 'eventplanners'
     },
     {
         name:'Maverick',
+        surname:"Walker",
         price:'20',
         category: 'hour',
         job: 'models'
     },
     {
         name:'Isaiah',
+        surname:"Hughes",
         price:'20',
         category: 'hour',
         job: 'models'
     },
     {
         name:'Andrew',
+        surname:"Ward",
         price:'20',
         category: 'hour',
         job: 'models'
     },
     {
         name:'Ryan',
+        surname:"Bennett",
         price:'20',
         category: 'hour',
         job: 'socialmediainfluencers'
     },
     {
         name:'Adrian',
+        surname:"Cook",
         price:'20',
         category: 'hour',
         job: 'socialmediainfluencers'
     },
     {
         name:'Christian',
+        surname:"Webb",
         price:'20',
         category: 'hour',
         job: 'socialmediainfluencers'
     },
     {
         name:'Aaron',
+        surname:"Jackson",
         price:'20',
         category: 'hour',
         job: 'socialmediainfluencers'
     },
     {
         name:'Luca',
+        surname:"Cox",
         price:'20',
         category: 'hour',
         job: 'contentcreators'
     },
     {
         name:'Cooper',
+        surname:"Lee",
         price:'20',
         category: 'hour',
         job: 'contentcreators'
@@ -365,10 +392,11 @@ async function matchTalentsWithFreelancers(){
     //     });
     // })
 }
-
 // insertAllFreelancers(seedFreelancers);
 // insertAllTalents(seedTalents);
-// matchTalentsWithFreelancers();
+
+matchTalentsWithFreelancers();
+
 // removeAllTalents()
 
 // Testing

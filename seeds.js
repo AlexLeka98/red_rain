@@ -18,7 +18,7 @@ const seedFreelancers = [
         name:'Alex',
         price:'20',
         category: 'hour',
-        job: 'photographers'
+        job: 'graphicdesigners'
     },
     {
         name:'Liam',
@@ -30,7 +30,7 @@ const seedFreelancers = [
         name:'Noah',
         price:'28',
         category: 'hour',
-        job: 'photographers'
+        job: 'nailtechnicians'
     },
     {
         name:'Oliver',
@@ -48,25 +48,25 @@ const seedFreelancers = [
         name:'William',
         price:'20',
         category: 'hour',
-        job: 'videographers'
+        job: 'makeupartists'
     },
     {
         name:'James',
         price:'20',
         category: 'hour',
-        job: 'photographers'
+        job: 'eventplanners'
     },
     {
         name:'Benjamin',
         price:'20',
         category: 'hour',
-        job: 'videographers'
+        job: 'photographers'
     },
     {
         name:'Lucas',
         price:'20',
         category: 'hour',
-        job: 'photographers'
+        job: 'graphicdesigners'
     },
     {
         name:'Cole',
@@ -78,7 +78,103 @@ const seedFreelancers = [
         name:'Conor',
         price:'20',
         category: 'hour',
-        job: 'photographers'
+        job: 'hairtechnicians'
+    },
+    {
+        name:'Isaac',
+        price:'20',
+        category: 'hour',
+        job: 'hairtechnicians'
+    },
+    {
+        name:'Lincoln',
+        price:'20',
+        category: 'hour',
+        job: 'makeupartists'
+    },
+    {
+        name:'Anthony',
+        price:'20',
+        category: 'hour',
+        job: 'eventplanners'
+    },
+    {
+        name:'Dylan',
+        price:'20',
+        category: 'hour',
+        job: 'eventdecor'
+    },
+    {
+        name:'Thomas',
+        price:'20',
+        category: 'hour',
+        job: 'eventpresenters'
+    },
+    {
+        name:'Charles',
+        price:'20',
+        category: 'hour',
+        job: 'eventpresenters'
+    },
+    {
+        name:'Christopher',
+        price:'20',
+        category: 'hour',
+        job: 'eventplanners'
+    },
+    {
+        name:'Maverick',
+        price:'20',
+        category: 'hour',
+        job: 'models'
+    },
+    {
+        name:'Isaiah',
+        price:'20',
+        category: 'hour',
+        job: 'models'
+    },
+    {
+        name:'Andrew',
+        price:'20',
+        category: 'hour',
+        job: 'models'
+    },
+    {
+        name:'Ryan',
+        price:'20',
+        category: 'hour',
+        job: 'socialmediainfluencers'
+    },
+    {
+        name:'Adrian',
+        price:'20',
+        category: 'hour',
+        job: 'socialmediainfluencers'
+    },
+    {
+        name:'Christian',
+        price:'20',
+        category: 'hour',
+        job: 'socialmediainfluencers'
+    },
+    {
+        name:'Aaron',
+        price:'20',
+        category: 'hour',
+        job: 'socialmediainfluencers'
+    },
+    {
+        name:'Luca',
+        price:'20',
+        category: 'hour',
+        job: 'contentcreators'
+    },
+    {
+        name:'Cooper',
+        price:'20',
+        category: 'hour',
+        job: 'contentcreators'
     },
 ]
 
@@ -207,44 +303,72 @@ const seedTalents = [
 ]
 
 
-// Freelancers.insertMany(seedFreelancers)
-// .then(res => {
-//     console.log("Added all freelancers",res.length);
-// })
-// .catch(err => {
-//     console.log(err)
-// })
+
+async function insertAllFreelancers(seedFreelancers) {
+    Freelancers.insertMany(seedFreelancers)
+    .then(res => {
+        console.log("Added all freelancers",res.length);
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+async function insertAllTalents(seedTalents) {
+    Talent.insertMany(seedTalents)
+    .then(res => {
+        console.log("Added all talents",res.length);
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+async function removeAllTalents(){
+    await Talent.remove({});
+}
+
+async function removeAllTalents(){
+    await Freelancers.remove({});
+}
+
+async function getAllTalents(callback){
+    let allTalents = await Talent.find({});
+    console.log(allTalents.length);
+    return allTalents
+}
 
 async function getAllFreelancers(){
     let allFreelancers = await Freelancers.find({});
     return allFreelancers
 }
 
-Talent.insertMany(seedTalents)
-    .then(res => {
-        getAllFreelancers().then((freelancers)=>{
-            for (let i = 0; i < freelancers.length; i++) {
-                console.log(freelancers[i].job);
-                res.forEach(talent => {
-                    if (freelancers[i].job === talent.profession_rec) {
-                        // console.log(`freelancers[i].job: ${freelancers[i].job}     talent.profession_rec  : ${talent.profession_rec}`)                   
-                        talent.freelancers.push(freelancers[i])
-                        // talent.save();
-                        // console.log(talent.freelancers);
-                        // talent.freelancers.push(freelancers[i]);
-                    }
-                })
-            }
+async function matchTalentsWithFreelancers(){
+    const insertedTalents = await Talent.find({});
+    insertedTalents.forEach(talent => {
+        Freelancers.find({job: talent.profession_rec}).then(freelancers => {
+            // console.log(`talent.profession:  ${talent.profession}`);
+            Talent.updateOne({profession_rec: talent.profession_rec},{freelancers: freelancers}).then(res =>{
+                console.log(res);
+            });
         });
     })
-.catch(err => {
-    console.log(err)
-})
 
-// Product.insertMany(seedProducts)
-// .then(res => {
-//     console.log(res);
-// })
-// .catch(err => {
-//     console.log(err)
-// })
+    // What I did before using save()
+    // const insertedTalents = await Talent.find({});
+    // insertedTalents.forEach(talent => {
+    //     Freelancers.find({job: talent.profession_rec}).then(freelancers => {
+    //         console.log(talent.profession_rec);
+    //         console.log(freelancers);
+    //         talent.freelancers.push(...freelancers);
+    //         talent.save();
+    //     });
+    // })
+}
+
+// insertAllFreelancers(seedFreelancers);
+// insertAllTalents(seedTalents);
+// matchTalentsWithFreelancers();
+// removeAllTalents()
+
+// Testing

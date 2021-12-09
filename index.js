@@ -16,13 +16,14 @@ const mongoose = require('mongoose');
 
 const multer = require('multer');
 const {storage} = require('./cloudinary');
-const upload = multer(storage);
+const upload = multer({ storage });
 // const stripe = require('stripe')(stripeSecretKey);
 
 const Events = require('./models/event');
 const Talents = require('./models/talent');
 const Product = require('./models/product');
 const {Freelancers} = require('./models/freelancer');
+const Talent = require('./models/talent');
 
 mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -44,7 +45,7 @@ app.use(mongoSanitize());
 // Body Parse middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(helmet());
+// app.use(helmet());
 
 
 const sessionOptions = { secret: 'thisisthesecret', resave: false, saveUninitialized: false };
@@ -172,6 +173,23 @@ app.get('/entertainment', (req, res) => {
 })
 
 
+
+//somePostROutes
+
+app.post('/talent-agency', upload.array('file'), async (req,res) => {
+    let talent = {profession:req.body.proff,
+                    image:{
+                        url: req.files[0].path,
+                        filename: req.files[0].filename
+                    },
+                    profession_rec: req.body.proff.toLowerCase().replace(/\s+/g, '')
+                }
+    console.log(talent);
+    const newTalent = new Talent(talent);
+    await newTalent.save();
+    const talents = await Talents.find({});
+    res.render('./talent-agency/talent-agency',{talents});
+})
 
 
 

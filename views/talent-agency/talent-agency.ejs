@@ -23,7 +23,7 @@
             <div class="u-list u-repeater u-list-1">
                 <% for (let i = 0; i<talents.length; i++) { %> 
                     <div class="u-align-right u-container-style u-image u-list-item u-repeater-item u-image-<%=i+2%>" 
-                        data-image="<%= talents[i].photo %> ">
+                        data-image="<%= talents[i].image.url %> ">
                         <a class="profession" href="talent-agency/<%=talents[i]._id%>">
                             <%= talents[i].profession %>
                         </a>
@@ -32,4 +32,18 @@
             </div>
         </section>
     </div>
+
+
+    <form action="/talent-agency" class="form1" enctype="multipart/form-data" method="post">
+        <div>
+            <label for="profession">Profession:</label>
+            <input type="text" name="proff" id="profession">
+        </div>
+        <div>
+            <input type="file" name="file" id="" multiple>
+        </div>    
+        <input type="submit" value="Submit">
+    </form>
+
+    
     <script src="/scripts/talent-agency.js"></script>

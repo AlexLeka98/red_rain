@@ -10,12 +10,14 @@ const talentSchema = new mongoose.Schema({
         required: true
     },
     photo: {
-        type: String,
-        // required: true
+        type:String
     },
+    image:{
+            url: String,
+            filename: String
+        },
     route: {
-        type: String,
-        required: true
+        type: String
     }, 
     profession_rec: {
         type: String,

@@ -246,85 +246,121 @@ const seedProducts = [
 const seedTalents = [
     {
         profession: "Photographers",
-        photo: "/assets/photoshoot-talent-agency.jpg",
         profession_rec: "photographers",
-        route: "/talent-agency/photographers",
+        // route: "/talent-agency/photographers",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Videographers",
-        photo: "/assets/videographer.jpg",
         profession_rec: "videographers",
-        route: "/talent-agency/videographers",
+        // route: "/talent-agency/videographers",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
     },
     {
         profession: "Graphic Designers",
-        photo: "/assets/graphicdesign.jpg",
         profession_rec: "graphicdesigners",
-        route: "/talent-agency/graphicdesigners",
+        // route: "/talent-agency/graphicdesigners",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Make Up Artists",
-        photo: "/assets/makeupartist.jpg",
         profession_rec: "makeupartists",
-        route: "/talent-agency/makeupartists",
+        // route: "/talent-agency/makeupartists",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Nail Technicians",
-        photo: "/assets/nailtechnician.jpg",
         profession_rec: "nailtechnicians",
-        route: "/talent-agency/nailtechnicians",
+        // route: "/talent-agency/nailtechnicians",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Hair Technicians",
-        photo: "/assets/hairtechnician.jpg",
         profession_rec: "hairtechnicians",
-        route: "/talent-agency/hairtechnicians",
+        // route: "/talent-agency/hairtechnicians",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Event Decor",
-        photo: "/assets/eventdecor.jpg",
         profession_rec: "eventdecor",
-        route: "/talent-agency/eventdecor",
+        // route: "/talent-agency/eventdecor",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Event Planners",
-        photo: "/assets/eventplanner.jpg",
         profession_rec: "eventplanners",
-        route: "/talent-agency/eventplanners",
+        // route: "/talent-agency/eventplanners",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Event Presenters",
-        photo: "/assets/eventpresentor.jpg",
         profession_rec: "eventpresenters",
-        route: "/talent-agency/eventpresenters",
+        // route: "/talent-agency/eventpresenters",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Models",
-        photo: "/assets/model.jpg",
         profession_rec: "models",
-        route: "/talent-agency/models",
+        // route: "/talent-agency/models",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Social Media Influencers",
-        photo: "/assets/influencer.jpg",
         profession_rec: "socialmediainfluencers",
-        route: "/talent-agency/socialmediainfluencers",
+        // route: "/talent-agency/socialmediainfluencers",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
     {
         profession: "Content Creators",
-        photo: "/assets/contentcreator.jpg",
         profession_rec: "contentcreators",
-        route: "/talent-agency/contentcreators",
+        // route: "/talent-agency/contentcreators",
+        image: {
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
+            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+        }
         // text: "",
     },
 ]
@@ -355,7 +391,7 @@ async function removeAllTalents(){
     await Talent.remove({});
 }
 
-async function removeAllTalents(){
+async function removeAllFreelancers(){
     await Freelancers.remove({});
 }
 
@@ -392,10 +428,11 @@ async function matchTalentsWithFreelancers(){
     //     });
     // })
 }
+// removeAllTalents()
+// removeAllFreelancers()
 // insertAllFreelancers(seedFreelancers);
 // insertAllTalents(seedTalents);
-
-matchTalentsWithFreelancers();
+// matchTalentsWithFreelancers();
 
 // removeAllTalents()
 

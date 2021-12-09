@@ -914,3 +914,23 @@
   .blacroundfull{
     height: 100% !important;
   }
+
+
+
+  .form1{
+    display: flex;
+    flex-direction: column;
+    height:400px;
+    width:600px;
+    background-color:yellowgreen;
+  }
+
+  .form1 div{
+    margin:10px 0px 0px 20px;
+    height:40px;
+    width:50%;
+  }
+
+  .form1 :last-child{
+    width:140px;
+  }

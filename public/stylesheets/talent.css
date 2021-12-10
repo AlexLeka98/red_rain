@@ -333,3 +333,36 @@
   .u-btn:hover{
       background-color:#ffe657;
   }
+
+
+  .addImage{
+    display: flex;
+    background-color:transparent; 
+    border:none;
+    position:absolute;
+    bottom:100px;
+    right:100px;
+    transition: all 80ms ease-in;
+  }
+  .addImage i{
+    border:10px solid yellow;
+    color:black;
+    background-color:yellow;
+    border-radius: 50%;
+    font-size:30px;
+  }
+
+  .addImage:hover{
+    transform: scale(1.3);
+    cursor: pointer;
+  }
+
+  .form1{
+    width:400px;
+    height:200px;
+    margin:0 0 20px 20px; 
+    color:rgb(34, 46, 216);
+  }
+  .unvisible{
+    visibility: hidden;
+  }

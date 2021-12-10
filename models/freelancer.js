@@ -7,7 +7,7 @@ const freelancerSchema = new mongoose.Schema({
     },
     surname: {
         type:String,
-        required:true
+        // required:true
     },
     price: {
         type:Number,

@@ -191,6 +191,25 @@ app.post('/talent-agency', upload.array('file'), async (req,res) => {
     res.render('./talent-agency/talent-agency',{talents});
 })
 
+app.post('/talent/:id', upload.array('file'), async (req, res) => {
+    if (req.body.name && req.body.surname){
+        const job = await Talent.findOne({_id:req.params.id});
+        console.log(job);
+        let freelancer = {name:req.body.name,
+            surname:req.body.surname,
+            price:'33',
+            job:job.profession_rec,
+            profileImage:"/assets/profile1.jpg"
+        }
+        const newFreelancer = new Freelancers(freelancer);
+        newFreelancer.save();
+    }
+    const { id } = req.params;
+    const talents_populate = await Talents.findById(id).populate('freelancers');
+    // console.log(talents_populate);
+    res.render('./talent-agency/talents',{talents: talents_populate});
+})
+
 
 
 const port = process.env.PORT || 3000;

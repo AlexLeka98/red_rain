@@ -39,8 +39,26 @@
                 <% } %>
             </div>
         </div>
-    </section>
 
+        <button class="addImage"><i class="fas fa-plus"></i></button>
+
+        <form action="/talent/<%= talents._id %>" method="post" class="form1 unvisible" enctype="multipart/form-data">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="surname">Surname</label>
+                <input type="text" name="surname" id="surname">
+            </div>
+            <div>
+                <label for="background_img">Background-Image</label>
+                <input type="file" name="file" id="background_img" multiple>
+            </div>
+            <input type="submit" value="Submit" id="submit">
+        </form>
+    </section>
+    
     <script src="/scripts/talents.js">
         // const image = document.getElementById("sec-746c");
         // image.style.backgroundImage = `url(${image.dataset.image})`

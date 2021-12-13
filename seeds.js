@@ -417,12 +417,18 @@ async function matchTalentsWithFreelancers(){
         });
     })
 }
-// removeAllTalents()
+// removeAllTalents().then()
 // removeAllFreelancers()
 // insertAllFreelancers(seedFreelancers);
 // insertAllTalents(seedTalents);
-// matchTalentsWithFreelancers();
+matchTalentsWithFreelancers();
+
+
+
+// Freelancers.deleteOne({id:"61b7b8eae1f0206a5fbbfa62"}).then(e => {
+//     console.log(e);
+// });
 
 // removeAllTalents()
 
-// Testing
+// 61b7d3f7f250e363fc8a0d36 event planner Christofer Knight

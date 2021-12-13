@@ -222,7 +222,13 @@ app.post('/talent/:id', upload.array('file'), async (req, res) => {
 })
 
 app.delete('/talent/:freelancer_id/:talent_id',async (req,res) => {
-    let {freelancer_id,talent_id} = req.params;
+    let {freelancer_id,talent_id} = req.params;    
+    let free = await Freelancers.find({_id:freelancer_id});
+    await Freelancers.deleteOne({_id:freelancer_id}).then(res=> {console.log(res)});
+    const talent = await Talent.findOne({_id: talent_id});
+    const index = talent.freelancers.indexOf(freelancer_id);
+    if (index > -1) { talent.freelancers.splice(index, 1);}
+    await talent.save();
     const talents_populate = await Talents.findById(talent_id).populate('freelancers');
     res.render('./talent-agency/talents',{talents: talents_populate});
 })
@@ -232,4 +238,3 @@ const port = process.env.PORT || 3000;
 app.listen(3000, () => {
     console.log(`Server on port ${port}`);
 });
-

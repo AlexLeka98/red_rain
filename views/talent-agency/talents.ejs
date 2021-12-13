@@ -35,6 +35,9 @@
                             <a href="/about-talent/<%= freelancer._id%> " class="btn u-button-style u-btn-1 clr">learn
                                 more</a>
                         </div>
+                        <form action="/talent/<%= freelancer._id %>?_method=DELETE" method="POST">
+                            <button>X</button>
+                        </form>
                     </div>
                 <% } %>
             </div>

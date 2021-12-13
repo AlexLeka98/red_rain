@@ -416,17 +416,6 @@ async function matchTalentsWithFreelancers(){
             });
         });
     })
-
-    // What I did before using save()
-    // const insertedTalents = await Talent.find({});
-    // insertedTalents.forEach(talent => {
-    //     Freelancers.find({job: talent.profession_rec}).then(freelancers => {
-    //         console.log(talent.profession_rec);
-    //         console.log(freelancers);
-    //         talent.freelancers.push(...freelancers);
-    //         talent.save();
-    //     });
-    // })
 }
 // removeAllTalents()
 // removeAllFreelancers()

@@ -177,38 +177,46 @@ app.get('/entertainment', (req, res) => {
 //somePostROutes
 
 app.post('/talent-agency', upload.array('file'), async (req,res) => {
+    let image;
+    if (req.files[0] == undefined){
+        image = {path:"https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639079816/YelpCamp/ci7c5n1woxmybydcljva.jpg",filename:"ci7c5n1woxmybydcljva"}
+    }
+    else {
+        image = {path:req.files[0].path,filename:req.files[0].pathname}
+    }
     let talent = {profession:req.body.proff,
                     image:{
-                        url: req.files[0].path,
-                        filename: req.files[0].filename
+                        url: image.path,
+                        filename: image.filename
                     },
                     profession_rec: req.body.proff.toLowerCase().replace(/\s+/g, '')
                 }
-    console.log(talent);
     const newTalent = new Talent(talent);
     await newTalent.save();
     const talents = await Talents.find({});
     res.render('./talent-agency/talent-agency',{talents});
 })
 
+// Adding a freelancer in a specific field.
 app.post('/talent/:id', upload.array('file'), async (req, res) => {
     if (req.body.name && req.body.surname){
         const job = await Talent.findOne({_id:req.params.id});
-        console.log(job);
-        let freelancer = {name:req.body.name,
-            surname:req.body.surname,
-            price:'33',
-            job:job.profession_rec,
-            profileImage:"/assets/profile1.jpg"
-        }
+        let freelancer = {name:req.body.name, surname:req.body.surname,price:'33',
+            job:job.profession_rec,profileImage:"/assets/profile1.jpg"}
         const newFreelancer = new Freelancers(freelancer);
-        newFreelancer.save();
+        await newFreelancer.save();
+        const talent = await Talent.findOne({profession_rec: job.profession_rec});
+        talent.freelancers.push(newFreelancer);
+        await talent.save();
     }
     const { id } = req.params;
     const talents_populate = await Talents.findById(id).populate('freelancers');
-    // console.log(talents_populate);
     res.render('./talent-agency/talents',{talents: talents_populate});
 })
+
+app.delete('/talent/:id', async (req, res) => {
+
+});
 
 
 

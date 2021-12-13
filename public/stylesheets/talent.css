@@ -29,6 +29,7 @@
     box-shadow: 7px 8px 17px 1px rgba(0,0,0,0.8);
     animation-duration: 750ms;
     max-height:500px;
+    position:relative;
   }
   
   .u-section-1 .u-container-layout-1 {
@@ -342,7 +343,7 @@
     position:absolute;
     bottom:100px;
     right:100px;
-    transition: all 80ms ease-in;
+    transition:transform 80ms ease-in;
   }
   .addImage i{
     border:10px solid yellow;
@@ -358,6 +359,9 @@
   }
 
   .form1{
+    position:absolute;
+    bottom:0px;
+    right:0px;
     width:400px;
     height:200px;
     margin:0 0 20px 20px; 

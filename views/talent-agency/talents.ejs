@@ -1,10 +1,10 @@
 <%= layout('layouts/boilerplate') %>
 
     <head>
-        <link rel="stylesheet" href="../stylesheets/nicepage.css">
-        <link rel="stylesheet" href="../stylesheets/talent.css">
-        <link rel="stylesheet" href="../stylesheets/navbar.css">
-        <link rel="stylesheet" href="../stylesheets/footer.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/nicepage.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/talent.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/navbar.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/footer.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script class="u-script" type="text/javascript" src="/scripts/nicepage.js" defer=""></script>
     </head>
@@ -32,10 +32,10 @@
                                 double
                                 click to start
                                 editing the text.</p>
-                            <a href="/about-talent/<%= freelancer._id%> " class="btn u-button-style u-btn-1 clr">learn
+                            <a href="/about-talent/<%= freelancer._id %>" class="btn u-button-style u-btn-1 clr">learn
                                 more</a>
                         </div>
-                        <form action="/talent/<%= freelancer._id %>?_method=DELETE" method="POST">
+                        <form action="/talent/<%= `${freelancer._id}/${talents._id}` %>/?_method=DELETE" method="post">
                             <button>X</button>
                         </form>
                     </div>

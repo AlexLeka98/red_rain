@@ -136,7 +136,6 @@ app.get('/products',async (req,res) => {
 // Talent Agency
 app.get('/talent-agency',async (req, res) => {
     const talents = await Talents.find({});
-    console.log(talents)
     res.render('./talent-agency/talent-agency',{talents});
 })
 
@@ -144,17 +143,25 @@ app.get('/talent-agency',async (req, res) => {
 app.get('/talent-agency/:id', async (req, res) => {
     const { id } = req.params;
     const talents_populate = await Talents.findById(id).populate('freelancers');
-    console.log(talents_populate);
     res.render('./talent-agency/talents',{talents: talents_populate});
 })
 
 
+app.delete('/test/:freelancer_id/:talent_id',async (req,res) => {
+    let {freelancer_id,talent_id} = req.params;
+
+    res.render('test');
+})
+
+app.delete('/talent/:id', async (req, res) => {
+    let {id} = req.params;
+    res.render('test',{id:id});
+})
 
 // Here is the persons profile. His work and everything. about-talent is a bad name
 app.get("/about-talent/:id", async (req, res) => {
     const { id } = req.params;
     const person = await Freelancers.findById(id);
-    // console.log(person);
     res.render("./talent-agency/about-talent", { person });
 })
 
@@ -214,10 +221,11 @@ app.post('/talent/:id', upload.array('file'), async (req, res) => {
     res.render('./talent-agency/talents',{talents: talents_populate});
 })
 
-app.delete('/talent/:id', async (req, res) => {
-
-});
-
+app.delete('/talent/:freelancer_id/:talent_id',async (req,res) => {
+    let {freelancer_id,talent_id} = req.params;
+    const talents_populate = await Talents.findById(talent_id).populate('freelancers');
+    res.render('./talent-agency/talents',{talents: talents_populate});
+})
 
 
 const port = process.env.PORT || 3000;

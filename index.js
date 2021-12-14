@@ -2,6 +2,7 @@
 if (process.env.NODE_ENV != "production") {
     require('dotenv').config();
 }
+console.log(process.env.NODE_ENV);
 
 const express = require('express');
 const app = express();
@@ -13,6 +14,8 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
+const catchAsync = require('./utils/catchAsync');
+const ExpressError = require('./utils/ExpressError');
 
 
 const morgan = require('morgan');
@@ -31,6 +34,7 @@ const Product = require('./models/product');
 const {Freelancers} = require('./models/freelancer');
 const Talent = require('./models/talent');
 const { ConnectionCheckedInEvent } = require('mongoose/node_modules/mongodb');
+const { application } = require('express');
 
 mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -56,47 +60,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// app.use((req,res,next)=>{
-//     const {password} = req.query;
-//     if (password === 'alex'){
-//         next();
-//     }
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
 const sessionOptions = { secret: 'thisisthesecret', resave: false, saveUninitialized: false };
 app.use(session(sessionOptions));
 
-
-app.post('/create-checkout-session', async (req, res) => {
+app.post('/create-checkout-session', catchAsync(async (req, res, next) => {
     const amount = 3210;
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
@@ -116,15 +83,14 @@ app.post('/create-checkout-session', async (req, res) => {
         success_url: 'http://localhost:3000/success',
         cancel_url: 'http://localhost:3000/event-page',
     });
-
     res.json({ id: session.id });
-});
 
-app.get('/products',async (req,res) => {
+}));
+
+app.get('/products',catchAsync(async (req, res, next) => {
     const products = await Product.find({});
-    res.send(`ALL PRODUCTS ARE HERE
-     ${products}`);
-})
+    res.send(`ALL PRODUCTS ARE HERE${products}`);
+}))
 
 app.get('/success', (req, res) => {
     res.render('success', { dirname: __dirname });
@@ -172,42 +138,30 @@ app.get('/about', (req, res) => {
 
 
 
-app.get('/products',async (req,res) => {
+app.get('/products',catchAsync(async (req, res, next) => {
     const products = await Product.find({});
-    res.send(`ALL PRODUCTS ARE HERE
-     ${products}`);
-})
+    res.send(`ALL PRODUCTS ARE HERE${products}`);
+}))
 // Talent Agency
-app.get('/talent-agency',async (req, res) => {
+app.get('/talent-agency',catchAsync(async (req, res, next) => {
     const talents = await Talents.find({});
     res.render('./talent-agency/talent-agency',{talents});
-})
+}))
 
 
-app.get('/talent-agency/:id', async (req, res) => {
+app.get('/talent-agency/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const talents_populate = await Talents.findById(id).populate('freelancers');
     res.render('./talent-agency/talents',{talents: talents_populate});
-})
+}))
 
-
-app.delete('/test/:freelancer_id/:talent_id',async (req,res) => {
-    let {freelancer_id,talent_id} = req.params;
-
-    res.render('test');
-})
-
-app.delete('/talent/:id', async (req, res) => {
-    let {id} = req.params;
-    res.render('test',{id:id});
-})
 
 // Here is the persons profile. His work and everything. about-talent is a bad name
-app.get("/about-talent/:id", async (req, res) => {
+app.get("/about-talent/:id", catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const person = await Freelancers.findById(id);
     res.render("./talent-agency/about-talent", { person });
-})
+}));
 
 
 
@@ -226,8 +180,7 @@ app.get('/entertainment', (req, res) => {
 
 
 //somePostROutes
-
-app.post('/talent-agency', upload.array('file'), async (req,res) => {
+app.post('/talent-agency', upload.array('file'), catchAsync(async (req, res, next) => {
     let image;
     if (req.files[0] == undefined){
         image = {path:"https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639079816/YelpCamp/ci7c5n1woxmybydcljva.jpg",filename:"ci7c5n1woxmybydcljva"}
@@ -246,10 +199,10 @@ app.post('/talent-agency', upload.array('file'), async (req,res) => {
     await newTalent.save();
     const talents = await Talents.find({});
     res.render('./talent-agency/talent-agency',{talents});
-})
+}))
 
 // Adding a freelancer in a specific field.
-app.post('/talent/:id', upload.array('file'), async (req, res) => {
+app.post('/talent/:id', upload.array('file'), catchAsync(async (req, res, next) => {
     if (req.body.name && req.body.surname){
         const job = await Talent.findOne({_id:req.params.id});
         let freelancer = {name:req.body.name, surname:req.body.surname,price:'33',
@@ -263,9 +216,9 @@ app.post('/talent/:id', upload.array('file'), async (req, res) => {
     const { id } = req.params;
     const talents_populate = await Talents.findById(id).populate('freelancers');
     res.render('./talent-agency/talents',{talents: talents_populate});
-})
+}))
 
-app.delete('/talent/:freelancer_id/:talent_id',async (req,res) => {
+app.delete('/talent/:freelancer_id/:talent_id', catchAsync(async (req, res, next) => {
     let {freelancer_id,talent_id} = req.params;    
     let free = await Freelancers.find({_id:freelancer_id});
     await Freelancers.deleteOne({_id:freelancer_id}).then(res=> {console.log(res)});
@@ -275,20 +228,47 @@ app.delete('/talent/:freelancer_id/:talent_id',async (req,res) => {
     await talent.save();
     const talents_populate = await Talents.findById(talent_id).populate('freelancers');
     res.render('./talent-agency/talents',{talents: talents_populate});
+}))
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.use((err,req,res,next)=>{
+    console.log(err.name);
+    next(err);
 })
 
-// app.use((req,res) => {
-//     throw new Error('The is nothing here');
-//     res.status(404).send('Not found!');
-// })
-
-app.get('/error',(req,res)=>{
-    chicken.fly();
-})
-
+// I no longer see the stack error in the browser.
+// If we throw any errors, our error handling middleware will
+// run. 
 app.use((err,req,res,next) => {
-    console.log(err);
+    const {status = 500, message="Something went wrong!"} = err;
+    res.status(status).send(message);
+    return next(err);
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const port = process.env.PORT || 3000;
 app.listen(3000, () => {

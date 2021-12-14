@@ -14,13 +14,10 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
-const catchAsync = require('./utils/catchAsync');
-const ExpressError = require('./utils/ExpressError');
-
+const Joi = require('joi');
 
 const morgan = require('morgan');
 // app.use(morgan('tiny'));
-
 
 
 const multer = require('multer');
@@ -33,6 +30,9 @@ const Talents = require('./models/talent');
 const Product = require('./models/product');
 const {Freelancers} = require('./models/freelancer');
 const Talent = require('./models/talent');
+const ExpressError = require('./utils/ExpressError');
+const catchAsync = require('./utils/catchAsync');
+const {freelancerSchema, talentSchema} = require('./schemas.js');
 const { ConnectionCheckedInEvent } = require('mongoose/node_modules/mongodb');
 const { application } = require('express');
 
@@ -57,6 +57,8 @@ app.use(mongoSanitize());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(helmet());
+
+
 
 
 
@@ -127,11 +129,6 @@ app.get('/event-page', (req, res) => {
     });
 })
 
-app.get('/sports', (req, res) => {
-    res.render('sports');
-})
-
-
 app.get('/about', (req, res) => {
     res.render('about');
 })
@@ -178,10 +175,31 @@ app.get('/entertainment', (req, res) => {
 })
 
 
-
-//somePostROutes
-app.post('/talent-agency', upload.array('file'), catchAsync(async (req, res, next) => {
+const validateTalent = (req, res, next) => {
     let image;
+    if (req.files[0] == undefined){
+        image = {path:"https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639079816/YelpCamp/ci7c5n1woxmybydcljva.jpg",filename:"ci7c5n1woxmybydcljva"}
+    }
+    else {
+        image = {path:req.files[0].path,filename:req.files[0].filename}
+    }
+    let talent = {profession:req.body.proff,image:{
+                        url: image.path,
+                        filename: image.filename
+                    },profession_rec: req.body.proff.toLowerCase().replace(/\s+/g, '')}
+    const {error} = talentSchema.validate(talent);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',');
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+//somePostROutes
+// Adding a new talent.
+app.post('/talent-agency' ,upload.array('file'), validateTalent, catchAsync(async (req, res, next) => {
+    let image;
+    console.log(req.files);
     if (req.files[0] == undefined){
         image = {path:"https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639079816/YelpCamp/ci7c5n1woxmybydcljva.jpg",filename:"ci7c5n1woxmybydcljva"}
     }
@@ -201,8 +219,21 @@ app.post('/talent-agency', upload.array('file'), catchAsync(async (req, res, nex
     res.render('./talent-agency/talent-agency',{talents});
 }))
 
+
+const validateFreelancer = (req, res, next) => {
+    let freelancer = {name:req.body.name, surname:req.body.surname,price:'33',
+    job:job.profession_rec,profileImage:"/assets/profile1.jpg"};
+
+    const {error} = freelancerSchema.validate(freelancer);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',');
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
 // Adding a freelancer in a specific field.
-app.post('/talent/:id', upload.array('file'), catchAsync(async (req, res, next) => {
+app.post('/talent/:id', upload.array('file'), validateFreelancer, catchAsync(async (req, res, next) => {
     if (req.body.name && req.body.surname){
         const job = await Talent.findOne({_id:req.params.id});
         let freelancer = {name:req.body.name, surname:req.body.surname,price:'33',
@@ -239,32 +270,19 @@ app.delete('/talent/:freelancer_id/:talent_id', catchAsync(async (req, res, next
 
 
 
-
-
-
-app.use((err,req,res,next)=>{
-    console.log(err.name);
-    next(err);
+app.all('*', (req, res, next)=>{
+    next(new ExpressError('Page Not Found', 404));
 })
+
 
 // I no longer see the stack error in the browser.
 // If we throw any errors, our error handling middleware will
 // run. 
 app.use((err,req,res,next) => {
-    const {status = 500, message="Something went wrong!"} = err;
-    res.status(status).send(message);
-    return next(err);
+    const {statusCode = 500} = err;
+    if (!err.message) err.message = 'Oh no, something went wrong!';
+    res.status(statusCode).render('error',{error:err});
 })
-
-
-
-
-
-
-
-
-
-
 
 
 

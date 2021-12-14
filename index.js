@@ -14,6 +14,12 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
 
+
+const morgan = require('morgan');
+// app.use(morgan('tiny'));
+
+
+
 const multer = require('multer');
 const {storage} = require('./cloudinary');
 const upload = multer({ storage });
@@ -24,6 +30,7 @@ const Talents = require('./models/talent');
 const Product = require('./models/product');
 const {Freelancers} = require('./models/freelancer');
 const Talent = require('./models/talent');
+const { ConnectionCheckedInEvent } = require('mongoose/node_modules/mongodb');
 
 mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -46,6 +53,43 @@ app.use(mongoSanitize());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(helmet());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.use((req,res,next)=>{
+//     const {password} = req.query;
+//     if (password === 'alex'){
+//         next();
+//     }
+// });
+
+
+
+
+
+
+
+
+
+
+
 
 
 const sessionOptions = { secret: 'thisisthesecret', resave: false, saveUninitialized: false };
@@ -233,6 +277,18 @@ app.delete('/talent/:freelancer_id/:talent_id',async (req,res) => {
     res.render('./talent-agency/talents',{talents: talents_populate});
 })
 
+// app.use((req,res) => {
+//     throw new Error('The is nothing here');
+//     res.status(404).send('Not found!');
+// })
+
+app.get('/error',(req,res)=>{
+    chicken.fly();
+})
+
+app.use((err,req,res,next) => {
+    console.log(err);
+})
 
 const port = process.env.PORT || 3000;
 app.listen(3000, () => {

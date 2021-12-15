@@ -220,10 +220,11 @@ app.post('/talent-agency' ,upload.array('file'), validateTalent, catchAsync(asyn
 }))
 
 
-const validateFreelancer = (req, res, next) => {
+const validateFreelancer = catchAsync(async (req, res, next) => {
+    console.log("One");
+    const job = await Talent.findOne({_id:req.params.id});
     let freelancer = {name:req.body.name, surname:req.body.surname,price:'33',
     job:job.profession_rec,profileImage:"/assets/profile1.jpg"};
-
     const {error} = freelancerSchema.validate(freelancer);
     if (error) {
         const msg = error.details.map(el => el.message).join(',');
@@ -231,9 +232,10 @@ const validateFreelancer = (req, res, next) => {
     } else {
         next();
     }
-}
+});
 // Adding a freelancer in a specific field.
 app.post('/talent/:id', upload.array('file'), validateFreelancer, catchAsync(async (req, res, next) => {
+    console.log("Two");
     if (req.body.name && req.body.surname){
         const job = await Talent.findOne({_id:req.params.id});
         let freelancer = {name:req.body.name, surname:req.body.surname,price:'33',

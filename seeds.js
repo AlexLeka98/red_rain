@@ -1,10 +1,15 @@
+if (process.env.NODE_ENV != "production") {
+    require('dotenv').config();
+}
+
 const mongoose = require('mongoose');
 const Product = require('./models/product');
 const Talent = require('./models/talent');
 const {Freelancers} = require('./models/freelancer');
 const { sanitize } = require('express-mongo-sanitize');
-
-mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
+const dbUrl = process.env.DB_URL;
+// 'mongodb://localhost:27017/farmStand'
+mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('CONNECTION OPEN')
     })
@@ -249,8 +254,8 @@ const seedTalents = [
         profession_rec: "photographers",
         // route: "/talent-agency/photographers",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597316/YelpCamp/photographer_x2367v.jpg",
+            filename: "YelpCamp/photographer_x2367v"
         }
         // text: "",
     },
@@ -259,8 +264,8 @@ const seedTalents = [
         profession_rec: "videographers",
         // route: "/talent-agency/videographers",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597008/YelpCamp/photoshoot-talent-agency_xiog9x.jpg",
+            filename: "YelpCamp/photoshoot-talent-agency_xiog9x"
         }
     },
     {
@@ -268,8 +273,8 @@ const seedTalents = [
         profession_rec: "graphicdesigners",
         // route: "/talent-agency/graphicdesigners",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597007/YelpCamp/graphicdesign_w3lqpj.jpg",
+            filename: "YelpCamp/graphicdesign_w3lqpj"
         }
         // text: "",
     },
@@ -278,8 +283,8 @@ const seedTalents = [
         profession_rec: "makeupartists",
         // route: "/talent-agency/makeupartists",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597007/YelpCamp/makeupartist_vnax6t.jpg",
+            filename: "YelpCamp/makeupartist_vnax6t"
         }
         // text: "",
     },
@@ -288,8 +293,8 @@ const seedTalents = [
         profession_rec: "nailtechnicians",
         // route: "/talent-agency/nailtechnicians",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597007/YelpCamp/nailtechnician_ussrxi.jpg",
+            filename: "YelpCamp/nailtechnician_ussrxi"
         }
         // text: "",
     },
@@ -298,8 +303,8 @@ const seedTalents = [
         profession_rec: "hairtechnicians",
         // route: "/talent-agency/hairtechnicians",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597007/YelpCamp/hairtechnician_erewdg.jpg",
+            filename: "YelpCamp/hairtechnician_erewdg"
         }
         // text: "",
     },
@@ -308,8 +313,8 @@ const seedTalents = [
         profession_rec: "eventdecor",
         // route: "/talent-agency/eventdecor",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597007/YelpCamp/eventdecor_fmanni.jpg",
+            filename: "YelpCamp/eventdecor_fmanni"
         }
         // text: "",
     },
@@ -318,8 +323,8 @@ const seedTalents = [
         profession_rec: "eventplanners",
         // route: "/talent-agency/eventplanners",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597008/YelpCamp/eventplanner_xau3yd.jpg",
+            filename: "YelpCamp/eventplanner_xau3yd"
         }
         // text: "",
     },
@@ -328,8 +333,8 @@ const seedTalents = [
         profession_rec: "eventpresenters",
         // route: "/talent-agency/eventpresenters",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597008/YelpCamp/eventpresentor_oxvvik.jpg",
+            filename: "YelpCamp/eventpresentor_oxvvik"
         }
         // text: "",
     },
@@ -338,8 +343,8 @@ const seedTalents = [
         profession_rec: "models",
         // route: "/talent-agency/models",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597007/YelpCamp/model_y5eftd.jpg",
+            filename: "YelpCamp/model_y5eftd"
         }
         // text: "",
     },
@@ -348,8 +353,8 @@ const seedTalents = [
         profession_rec: "socialmediainfluencers",
         // route: "/talent-agency/socialmediainfluencers",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597007/YelpCamp/influencer_cwjzrq.jpg",
+            filename: "YelpCamp/influencer_cwjzrq"
         }
         // text: "",
     },
@@ -358,8 +363,8 @@ const seedTalents = [
         profession_rec: "contentcreators",
         // route: "/talent-agency/contentcreators",
         image: {
-            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639071763/YelpCamp/riyjhqhtdkdktqrfafub.jpg",
-            filename: "YelpCamp/riyjhqhtdkdktqrfafub"
+            url: "https://res.cloudinary.com/dyb9nhiqu/image/upload/v1639597317/YelpCamp/contentcreator_bi2fnt.jpg",
+            filename: "YelpCamp/contentcreator_bi2fnt"
         }
         // text: "",
     },
@@ -417,7 +422,7 @@ async function matchTalentsWithFreelancers(){
         });
     })
 }
-// removeAllTalents().then()
+// removeAllTalents()
 // removeAllFreelancers()
 // insertAllFreelancers(seedFreelancers);
 // insertAllTalents(seedTalents);

@@ -33,7 +33,9 @@
   }
   
   .u-section-1 .u-container-layout-1 {
+    border-radius: 10px;
     padding: 30px;
+    position: relative;
   }
   
   .u-section-1 .u-image-1 {
@@ -42,29 +44,43 @@
     margin-bottom: 0;
     margin-left: 0;
     animation-duration: 1000ms;
+    border-radius: 5px;
   }
   
   .u-section-1 .u-text-1 {
     margin: 21px 76px 0 0;
+    font-size: 1.475rem;
+    transition: all 100ms;
+    font-weight: 700;
+    transition: none !important;;
   }
+  .u-section-1 .u-text-1:hover{
+    color:#478ac9;
+
+  }
+
   
   .u-section-1 .u-line-1 {
     transform-origin: left center 0px;
-    margin: 29px auto 0 0;
+    margin: 12px auto 0 0;
   }
   
   .u-section-1 .u-text-2 {
-    margin: 20px auto 0 0;
+    margin: 20px auto 20px 0;
   }
   
   .u-section-1 .u-btn-1 {
+    position: absolute;
+    bottom:0;
+    right:0;
+
     font-size: 0.875rem;
     letter-spacing: 1px;
     font-weight: 700;
     text-transform: uppercase;
     background-image: none;
     border-style: none;
-    margin: 20px auto 0;
+    margin: 0px 20px 20px 0px;
   }
   
   .u-section-1 .u-list-item-2 {
@@ -174,10 +190,6 @@
       margin-left: initial;
     }
   
-    .u-section-1 .u-btn-1 {
-      width: 99px;
-      height: 38px;
-    }
   
     .u-section-1 .u-image-2 {
       height: 171px;
@@ -370,3 +382,26 @@
   .unvisible{
     visibility: hidden;
   }
+
+  .xButtonForm{
+    position:absolute;
+    right:0;
+  }
+
+  .xButtonForm button{
+    width:25px;
+    height:25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    font-weight: bolder;
+    background-color:rgb(252, 123, 100);
+  }
+  .xButtonForm button:hover{
+    cursor: pointer;
+    background-color:rgb(255, 77, 45);
+  }
+
+
+

@@ -22,8 +22,10 @@
                                 data-image-width="2000" data-image-height="1333"
                                 src="<%= freelancer.profileImage %> ">
                             <h3 class="u-text u-text-1">
-                                <%= freelancer.name %>
-                                <%= freelancer.surname %>
+                                <a href="/about-talent/<%= freelancer._id %>">
+                                    <%= freelancer.name %>
+                                    <%= freelancer.surname %>
+                                </a>
                             </h3>
                             <div
                                 class="u-border-1 u-border-grey-dark-1 u-expanded-width u-line u-line-horizontal u-line-1">
@@ -35,7 +37,7 @@
                             <a href="/about-talent/<%= freelancer._id %>" class="btn u-button-style u-btn-1 clr">learn
                                 more</a>
                         </div>
-                        <form action="/talent/<%= `${freelancer._id}/${talents._id}` %>/?_method=DELETE" method="post">
+                        <form  class="xButtonForm" action="/talent/<%= `${freelancer._id}/${talents._id}` %>/?_method=DELETE" method="post">
                             <button>X</button>
                         </form>
                     </div>

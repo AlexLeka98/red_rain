@@ -426,7 +426,7 @@ async function matchTalentsWithFreelancers(){
 // removeAllFreelancers()
 // insertAllFreelancers(seedFreelancers);
 // insertAllTalents(seedTalents);
-matchTalentsWithFreelancers();
+// matchTalentsWithFreelancers();
 
 
 

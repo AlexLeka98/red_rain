@@ -18,9 +18,11 @@ const mongoose = require('mongoose');
 const talentAgencyRoutes = require('./routes/talent-agency');
 const talentRoutes = require('./routes/talent');
 const createCheckoutSessionRoutes = require('./routes/create-checkout-session');
+const flash = require('connect-flash');
 const morgan = require('morgan');
-// app.use(morgan('tiny'));
+app.use(morgan('tiny'));
 app.use(session({ secret: 'thisisnotagoodsecret', resave: false, saveUninitialized: false})); //req.sess property now.
+app.use(flash);
 
 
 const {Freelancers} = require('./models/freelancer');
@@ -28,8 +30,9 @@ const ExpressError = require('./utils/ExpressError');
 const catchAsync = require('./utils/catchAsync');
 
 const dbUrl = process.env.DB_URL;
-// 'mongodb://localhost:27017/farmStand'
-mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+
+// dbUrl
+mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('CONNECTION OPEN')
     })
@@ -39,13 +42,14 @@ mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     })
 
 
+
 app.engine('ejs', ejsMate);
 app.set("view engine", "ejs");
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 app.use('/assets', express.static(__dirname + '/assets'));
 app.use(mongoSanitize());
-
+console.log("Hey There!");
 // Body Parse middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -86,6 +90,7 @@ app.get('/failure', (req, res) => {
 })
 
 app.get('/home', (req, res) => {
+    console.log('Hello!');
     res.render('home');
 })
 
@@ -136,7 +141,11 @@ app.get('/entertainment', (req, res) => {
     res.render('./entertainment/entertainment');
 })
 
-
+app.get('/test',(req,res)=>{
+    req.flash('success', 'Succesfully made a new flash');
+    // res.render('')
+    res.send('heyy!');
+})
 
 
 

@@ -2,7 +2,6 @@
 if (process.env.NODE_ENV != "production") {
     require('dotenv').config();
 }
-console.log(process.env.NODE_ENV);
 
 
 const express = require('express');
@@ -20,9 +19,9 @@ const talentRoutes = require('./routes/talent');
 const createCheckoutSessionRoutes = require('./routes/create-checkout-session');
 const flash = require('connect-flash');
 const morgan = require('morgan');
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
 app.use(session({ secret: 'thisisnotagoodsecret', resave: false, saveUninitialized: false})); //req.sess property now.
-app.use(flash);
+// app.use(flash);  //For some reason makes whole page loading.
 
 
 const {Freelancers} = require('./models/freelancer');
@@ -78,8 +77,9 @@ app.get('/viewcount', (req,res) => {
     res.send(`You have viewed this page ${req.session.count} time(s)`);
 })
 
-
-
+app.get('/hey', (req,res) => {
+    res.send("Hey!");
+})
 
 app.get('/success', (req, res) => {
     res.render('success', { dirname: __dirname });
@@ -90,7 +90,6 @@ app.get('/failure', (req, res) => {
 })
 
 app.get('/home', (req, res) => {
-    console.log('Hello!');
     res.render('home');
 })
 
@@ -150,7 +149,6 @@ app.get('/test',(req,res)=>{
 
 
 // Middleware, and error handlers
-
 app.all('*', (req, res, next)=>{
     next(new ExpressError('Page Not Found', 404));
 })
@@ -163,7 +161,6 @@ app.use((err,req,res,next) => {
     if (!err.message) err.message = 'Oh no, something went wrong!';
     res.status(statusCode).render('error',{error:err});
 })
-
 
 
 const port = process.env.PORT || 3000;
